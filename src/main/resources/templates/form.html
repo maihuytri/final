@@ -1,0 +1,16 @@
+<html>
+
+<body>
+    <form action="/flowers/save" method="post" th:object="${flower}">
+        <input type="hidden" th:field="*{id}">
+        <label>Name: <input type="text" th:field="*{name}" /></label><br />
+        <label>Color: </label><select th:field="*{color}">
+            <option th:each="color: ${colors}" th:text="${color}" th:value="${color}"></option>
+        </select><br />
+        <label>Price: <input type="text" th:field="*{price}" /></label><br />
+        <br />
+        <button type="submit">Save</button></span>
+    </form>
+</body>
+
+</html>

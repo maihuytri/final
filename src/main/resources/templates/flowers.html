@@ -1,0 +1,72 @@
+<html>
+
+<body>
+
+    <title>Customer</title>
+    <style>
+        .inactive {
+            color: red;
+        }
+
+        .active {
+            color: blue;
+        }
+    </style>
+
+    <p>Flower Market</p>
+    <p><a href="/flowers/add">Add New Flower</a></p>
+
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Price</th>
+        </thead>
+        <tbody>
+            <tr th:each="flower : ${flowers}" th:if="${not #lists.isEmpty(flowers)}">
+                <td th:text="${flower.name}"></td>
+                <td th:text="${flower.color}"></td>
+                <td th:text="${flower.price}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <span><a href="javascript:showRedFlowers()">Show Red Flowers:</a> </span><span id="redFlowers"
+            class="hideRedFolower" th:text="${redFlowers}"></span>
+    </p>
+    <p>
+        <span><a href="javascript:showTotalPrice()">Total Price of All Flowers:</a> </span><span id="totalPrice"
+            th:text="${total}" class="hideTotalPrice"></span>
+    </p>
+
+    <style>
+        .showRedFolower {
+            display: block;
+        }
+
+        .hideRedFolower {
+            display: none;
+        }
+
+        .showTotalPrice {
+            display: block;
+        }
+
+        .hideTotalPrice {
+            display: none;
+        }
+    </style>
+    <script>
+        function showRedFlowers() {
+            var redFlowers = document.getElementById("redFlowers");
+            redFlowers.setAttribute("class", "showRedFolower");
+        }
+
+        function showTotalPrice() {
+            var totalPrice = document.getElementById("totalPrice");
+            totalPrice.setAttribute("class", "showTotalPrice");
+        }
+    </script>
+</body>
+
+</html>
